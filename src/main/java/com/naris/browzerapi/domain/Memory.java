@@ -1,12 +1,19 @@
 package com.naris.browzerapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Memory {
     @Id
+    @JsonProperty
     private String id;
+    @JsonProperty(required = true, value = "t")
     private String title;
+    @JsonProperty(value = "pc")
     private Long picturesCount = 0l;
+    @JsonProperty(value = "l")
     private Location location;
 
     public String getTitle() {

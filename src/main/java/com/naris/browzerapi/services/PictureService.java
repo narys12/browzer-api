@@ -25,4 +25,12 @@ public class PictureService {
                     this.pictureRepository.save(picture);
                 });
     }
+
+    public List<Picture> getPicturesByMemoryId(String memoryId) {
+        return pictureRepository.findByMemoryId(memoryId);
+    }
+
+    public void delete(String pictureId) {
+        this.pictureRepository.delete(pictureId);
+    }
 }
