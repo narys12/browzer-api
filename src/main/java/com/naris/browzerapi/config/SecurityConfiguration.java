@@ -7,8 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import static com.naris.browzerapi.config.StaticValues.ADMIN_ROLE;
-import static com.naris.browzerapi.config.StaticValues.USER_ROLE;
+import static com.naris.browzerapi.global.StaticValues.ADMIN_ROLE;
+import static com.naris.browzerapi.global.StaticValues.USER_ROLE;
 
 @Configuration
 @EnableWebSecurity
@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/admin/**").hasRole(ADMIN_ROLE)
+                .authorizeRequests().antMatchers("/graphiql/**").hasRole(ADMIN_ROLE)
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(authenticationEntryPoint)

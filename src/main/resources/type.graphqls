@@ -1,0 +1,30 @@
+type Picture {
+    id: String
+    location: Location
+    memoryId: String
+    image: Image
+    createdAt: String
+}
+
+type Image {
+    src: String
+    alt: String
+}
+
+type ResponseUtils {
+    value: String
+    attribute: String
+}
+
+type Memory {
+    id: String
+    title: String
+    location: Location
+}
+
+type Location {
+    latitude: String
+    longitude: String
+    place: String
+    country: String
+}

@@ -1,0 +1,26 @@
+schema {
+    query: Query,
+    mutation: Mutation
+}
+
+type Query {
+    # Memory
+    memory(id: String): Memory
+    memories(page: Int, count: Int): [Memory]
+
+    # Picture
+    picture(id: String): Picture
+    pictures(memoryId: String): [Picture]
+    countPicturesByMemory(memoryId: String): ResponseUtils
+}
+
+type Mutation {
+    # Memory
+    saveMemory(memory: MemoryInput, location: LocationInput): Memory
+    deleteMemory(id: String): ResponseUtils
+
+    # Picture
+    savePicture(memoryId: String, image: ImageInput, location: LocationInput): Picture
+    deletePicture(id: String): ResponseUtils
+}
+

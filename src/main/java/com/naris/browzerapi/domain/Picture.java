@@ -8,12 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Picture {
     @Id
     private String id;
-    @JsonProperty(value = "src")
-    private String src;
     @JsonProperty(value = "l")
     private Location location;
     @JsonProperty(value = "mId")
     private String memoryId;
+    @JsonProperty(value = "i")
+    private Image image;
+    @JsonProperty(value = "ca")
+    private String createdAt;
 
     public Location getLocation() {
         return location;
@@ -21,14 +23,6 @@ public class Picture {
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-    public String getSrc() {
-        return src;
-    }
-
-    public void setSrc(String src) {
-        this.src = src;
     }
 
     public String getId() {
@@ -45,5 +39,21 @@ public class Picture {
 
     public void setMemoryId(String memoryId) {
         this.memoryId = memoryId;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

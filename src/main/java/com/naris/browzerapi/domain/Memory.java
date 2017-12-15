@@ -9,10 +9,8 @@ public class Memory {
     @Id
     @JsonProperty
     private String id;
-    @JsonProperty(required = true, value = "t")
+    @JsonProperty(value = "t")
     private String title;
-    @JsonProperty(value = "pc")
-    private Long picturesCount = 0l;
     @JsonProperty(value = "l")
     private Location location;
 
@@ -30,14 +28,6 @@ public class Memory {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Long getPicturesCount() {
-        return picturesCount;
-    }
-
-    public void setPicturesCount(Long picturesCount) {
-        this.picturesCount = picturesCount;
     }
 
     public Location getLocation() {

@@ -1,0 +1,22 @@
+input LocationInput {
+    lat: String
+    long: String
+    p: String
+    c: String
+}
+
+input PictureInput {
+    id: String
+    mId: String
+    ca: String
+}
+
+input MemoryInput {
+    id: String
+    t: String
+}
+
+input ImageInput {
+    src: String
+    alt: String
+}
