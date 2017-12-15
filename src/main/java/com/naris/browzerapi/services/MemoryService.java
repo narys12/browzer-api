@@ -2,7 +2,6 @@ package com.naris.browzerapi.services;
 
 import com.naris.browzerapi.domain.Location;
 import com.naris.browzerapi.domain.Memory;
-import com.naris.browzerapi.global.StaticValues;
 import com.naris.browzerapi.repository.MemoryRepository;
 import com.naris.browzerapi.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +38,7 @@ public class MemoryService {
         this.pictureService.getPicturesByMemoryId(id)
             .stream()
             .forEach(picture -> this.pictureService.delete(id));
-
-        ResponseUtils responseUtils = new ResponseUtils();
-        responseUtils.setValue("true");
-        responseUtils.setAttribute(StaticValues.ITEM_DELETED);
-        return responseUtils;
+        return ResponseUtils.buildDeletedResponse();
     }
 
     public Memory createOrUpdate(Memory memory, Location location) {

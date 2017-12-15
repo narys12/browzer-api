@@ -1,8 +1,15 @@
 package com.naris.browzerapi.utils;
 
+import static com.naris.browzerapi.global.StaticValues.ITEM_DELETED;
+
 public class ResponseUtils {
     private String value;
     private String attribute;
+
+    private ResponseUtils(String value, String attribute) {
+        this.value = value;
+        this.attribute = attribute;
+    }
 
     public String getValue() {
         return value;
@@ -18,5 +25,13 @@ public class ResponseUtils {
 
     public void setAttribute(String attribute) {
         this.attribute = attribute;
+    }
+
+    public static ResponseUtils buildCustomResponse(String value, String attribute) {
+        return new ResponseUtils(value, attribute);
+    }
+
+    public static ResponseUtils buildDeletedResponse() {
+        return new ResponseUtils("true", ITEM_DELETED);
     }
 }
