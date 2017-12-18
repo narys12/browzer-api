@@ -3,8 +3,10 @@ package com.naris.browzerapi.resolvers;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.coxautodev.graphql.tools.GraphQLResolver;
+import com.naris.browzerapi.domain.Image;
 import com.naris.browzerapi.domain.Location;
 import com.naris.browzerapi.domain.Memory;
+import com.naris.browzerapi.domain.Picture;
 import com.naris.browzerapi.services.MemoryService;
 import com.naris.browzerapi.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,8 @@ public class MemoryResolver implements GraphQLQueryResolver, GraphQLMutationReso
      * Mutations
      */
 
-    public Memory saveMemory(Memory memory, Location location) {
-        return memoryService.createOrUpdate(memory, location);
+    public Memory saveMemory(Memory memory, Image image, Location location) {
+        return memoryService.createOrUpdate(memory, image, location);
     }
 
     public ResponseUtils deleteMemory(String id) {

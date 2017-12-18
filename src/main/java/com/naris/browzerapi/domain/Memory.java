@@ -13,28 +13,28 @@ public class Memory {
     private String title;
     @JsonProperty(value = "l")
     private Location location;
+    @JsonProperty(value = "i")
+    private Image image;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Memory withImage(Image image) {
+        this.image = image;
+        return this;
     }
 
     public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public Memory withLocation(Location location) {
         this.location = location;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getId() {
+        return id;
     }
 }

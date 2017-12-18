@@ -21,39 +21,23 @@ public class Picture {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public Picture withLocation(Location location) {
         this.location = location;
+        return this;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getMemoryId() {
-        return memoryId;
-    }
-
-    public void setMemoryId(String memoryId) {
+    public Picture withMemoryId(String memoryId) {
         this.memoryId = memoryId;
+        return this;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
+    public Picture withImage(Image image) {
         this.image = image;
+        return this;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
+    public Picture withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+        return this;
     }
 }

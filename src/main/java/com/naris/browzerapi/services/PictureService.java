@@ -4,9 +4,12 @@ import com.naris.browzerapi.domain.Image;
 import com.naris.browzerapi.domain.Location;
 import com.naris.browzerapi.domain.Picture;
 import com.naris.browzerapi.repository.PictureRepository;
+import com.naris.browzerapi.utils.DateUtils;
 import com.naris.browzerapi.utils.ResponseUtils;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rx.Observable;
 
 import java.util.List;
 
@@ -21,27 +24,51 @@ public class PictureService {
     }
 
     public ResponseUtils delete(String pictureId) {
-        this.pictureRepository.delete(pictureId);
-        return ResponseUtils.buildDeletedResponse();
+        return Observable
+                .just(pictureId)
+                .doOnNext(pictureRepository::delete)
+                .map(ResponseUtils::buildDeletedResponse)
+                .toBlocking()
+                .first();
     }
 
     public Picture findOne(String pictureId) {
-        return pictureRepository.findOne(pictureId);
+        return Observable
+                .just(pictureId)
+                .map(pictureRepository::findOne)
+                .toBlocking()
+                .first();
     }
 
     public ResponseUtils countPicturesByMemory(String memoryId) {
-        Long pictures = pictureRepository.countByMemoryId(memoryId);
-        return ResponseUtils
-                .buildCustomResponse("count", String.valueOf(pictures));
+        return Observable
+                .just(memoryId)
+                .map(pictureRepository::countByMemoryId)
+                .map(count -> ResponseUtils
+                        .buildCustomResponse(String.valueOf(count), "count"))
+                .toBlocking()
+                .first();
     }
 
     public Picture savePicture(String memoryId, Image image, Location location) {
-        Picture picture = new Picture();
-        picture.setImage(image);
-        picture.setLocation(location);
-        picture.setMemoryId(memoryId);
-        return pictureRepository.save(picture);
+        return Observable
+                .just(new Picture()
+                        .withImage(image)
+                        .withLocation(location)
+                        .withMemoryId(memoryId)
+                        .withCreatedAt(DateUtils.strMillis(DateTime.now())))
+                .map(pictureRepository::save)
+                .toBlocking()
+                .first();
     }
 
 
+    public String deleteByMemoryId(String memoryId) {
+        return Observable
+                .just(memoryId)
+                .map(pictureRepository::deletePictureByMemoryId)
+                .map(count -> memoryId)
+                .toBlocking()
+                .first();
+    }
 }

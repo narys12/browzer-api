@@ -16,7 +16,7 @@ type Query {
 
 type Mutation {
     # Memory
-    saveMemory(memory: MemoryInput, location: LocationInput): Memory
+    saveMemory(memory: MemoryInput, image: ImageInput, location: LocationInput): Memory
     deleteMemory(id: String): ResponseUtils
 
     # Picture

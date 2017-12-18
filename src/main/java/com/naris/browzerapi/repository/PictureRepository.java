@@ -9,5 +9,6 @@ public interface PictureRepository extends MongoRepository<Picture, String> {
 
     long countByMemoryId(String memoryId);
     List<Picture> findByMemoryId(String memoryId);
+    long deletePictureByMemoryId(String memoryId);
 
 }

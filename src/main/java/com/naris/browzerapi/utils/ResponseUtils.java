@@ -31,7 +31,7 @@ public class ResponseUtils {
         return new ResponseUtils(value, attribute);
     }
 
-    public static ResponseUtils buildDeletedResponse() {
-        return new ResponseUtils("true", ITEM_DELETED);
+    public static ResponseUtils buildDeletedResponse(String deletedItem) {
+        return new ResponseUtils(deletedItem, ITEM_DELETED);
     }
 }
